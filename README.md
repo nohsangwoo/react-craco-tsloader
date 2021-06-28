@@ -2,7 +2,9 @@
 
 # eject 안하고 webpack 설정 변경
 
-npm install ts-loader@8.2.0
+# npm install ts-loader@8.2.0
+
+- 9버젼은 현재 webpack5랑 호환성 이슈가 좀 있는듯
 
 #
 
@@ -12,7 +14,7 @@ https://blog.johnnyreilly.com/2021/01/02/create-react-app-with-ts-loader-and-cra
 
 https://tigger.dev/entry/React-CRA-Typescript-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-Module-Alias-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0
 
-## craco 라이브러리 설치
+## craco & craco-alias & ts-loader 라이브러리 설치
 
 npm install @craco/craco
 npm install -D craco-alias
@@ -89,9 +91,9 @@ npm install sass-loader
 
 npm uninstall less-loader -->
 
-# npm install less@3.9.0 less-loader@5.0.0 -s
+<!-- # npm install less@3.9.0 less-loader@5.0.0 -s -->
 
-npm install less-loader@5.0.0
+<!-- npm install less-loader@5.0.0 -->
 
 https://hyperconnect.github.io/2020/12/14/typescript-build-optimization.html
 
