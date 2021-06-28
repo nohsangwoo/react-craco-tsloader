@@ -1,46 +1,104 @@
-# Getting Started with Create React App
+# ts-loader 와 craco 적용
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# eject 안하고 webpack 설정 변경
 
-## Available Scripts
+npm install ts-loader@8.2.0
 
-In the project directory, you can run:
+#
 
-### `yarn start`
+https://blog.johnnyreilly.com/2021/01/02/create-react-app-with-ts-loader-and-craco/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# craco
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+https://tigger.dev/entry/React-CRA-Typescript-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-Module-Alias-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0
 
-### `yarn test`
+## craco 라이브러리 설치
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm install @craco/craco
+npm install -D craco-alias
+npm install ts-loader@8.2.0
 
-### `yarn build`
+출처: https://tigger.dev/entry/React-CRA-Typescript-환경에서-Module-Alias-설정하기 [개발 여행]
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## tsconfig.paths.json
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@src/*": ["src/*"], "@components/*": ["src/components/*"] }
+  }
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `yarn eject`
+## craco.config.js
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+const CracoAlias = require('craco-alias');
+module.exports = {
+  plugins: [
+    {
+      plugin: CracoAlias,
+      options: {
+        source: 'tsconfig',
+        baseUrl: '.',
+        tsConfigPath: 'tsconfig.paths.json',
+        debug: false,
+      },
+    },
+  ],
+};
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## tsconfig.json
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+const CracoAlias = require('craco-alias');
+module.exports = {
+  plugins: [
+    {
+      plugin: CracoAlias,
+      options: {
+        source: 'tsconfig',
+        baseUrl: '.',
+        tsConfigPath: 'tsconfig.paths.json',
+        debug: false,
+      },
+    },
+  ],
+};
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## package.json
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+```
+
+<!-- npm install loader-utils@latest
+
+npm install sass-loader
+
+npm uninstall less-loader -->
+
+# npm install less@3.9.0 less-loader@5.0.0 -s
+
+npm install less-loader@5.0.0
+
+https://hyperconnect.github.io/2020/12/14/typescript-build-optimization.html
+
+# 웹팩 설정
+
+https://luavis.me/web/speed-up-webpack
+
+# UnhandledPromiseRejectionWarning: Error: Cannot find module 'react-scripts/package.json'
+
+npm i react-scripts
