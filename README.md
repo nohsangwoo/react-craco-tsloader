@@ -104,3 +104,7 @@ https://luavis.me/web/speed-up-webpack
 # UnhandledPromiseRejectionWarning: Error: Cannot find module 'react-scripts/package.json'
 
 npm i react-scripts
+
+# ForkTsCheckerWebpackPlugin 옵션도 적용해줘야함
+
+https://github.com/TypeStrong/fork-ts-checker-webpack-plugin
